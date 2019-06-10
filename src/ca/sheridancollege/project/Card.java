@@ -2,6 +2,7 @@
  * SYST 17796 Project Winter 2019 Base code.
  * Students can modify and extend to implement their game.
  * Add your name as a modifier and the date!
+ * Modified by: Falit Rajora, Harshdeep Kaur, Gurpreet Singh, Harkirat Cheema (11June 2019)
  */
 package ca.sheridancollege.project;
 
@@ -13,6 +14,7 @@ package ca.sheridancollege.project;
  */
 public abstract class Card 
 {
+    
     //default modifier for child classes
     
     /**
