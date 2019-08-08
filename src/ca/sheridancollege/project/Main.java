@@ -13,18 +13,29 @@ public class Main {
     public static void main(String args[]){
         Scanner input=new Scanner(System.in);
         //int size=input.nextInt();
-        int size=13;
-        System.out.println("Enter Number of Four Players ");
+        System.out.println("Enter Name of Four Players ");
+        
         System.out.print("Enter first player Name: ");
         String name1=input.nextLine();
+        
         System.out.print("Enter Second player Name: ");
         String name2=input.nextLine();
+        
         System.out.print("Enter Third player Name: ");
         String name3=input.nextLine();
+        
         System.out.print("Enter Fourth player Name: ");
         String name4=input.nextLine();
-        GroupOfCards obj=new GroupOfCards(size);
         
+        Player player=new Player(name1,name2,name3,name4){
+            public void play(){
+                System.out.println("");  
+            };
+        };
+        
+        GroupOfCards.generateHand();
+        GroupOfCards.shuffle();
+        GroupOfCards.showCards();
         
     }
     
