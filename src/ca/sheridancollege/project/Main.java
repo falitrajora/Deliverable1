@@ -35,7 +35,7 @@ public class Main {
         
         GroupOfCards.generateHand();
         GroupOfCards.shuffle();
-        GroupOfCards.showCards();
+        
         
     }
     

@@ -5,61 +5,30 @@
  * Modified by: Falit Rajora, Harshdeep Kaur, Gurpreet Singh, Harkirat Cheema (11June 2019)
  */
 package ca.sheridancollege.project;
+import java.util.*;
+import static java.util.Collections.list;
+import java.util.stream.Collectors;
 
-import java.util.ArrayList;
 
 /**
  * The class that models your game. You should create a more specific
  * child of this class and instantiate the methods given.
  * @author dancye, 2018
  */
-public abstract class Game extends Card
+public abstract class Game extends Player
 {
-    private final String gameName;//the title of the game
-    private ArrayList <Player> players;// the players of the game
-    
-    public Game(String givenName)
-    {  
-        gameName = givenName;
-        players = new ArrayList();
+    public Game(String n1,String n2,String n3,String n4){
+        super(n1,n2,n3,n4);
     }
-
-    /**
-     * @return the gameName
-     */
-    public String getGameName() 
-    {
-        return gameName;
-    }
-    
-     /**
-     * @return the players of this game
-     */
-    public ArrayList <Player> getPlayers() 
-    {
-        return players;
-    }
-
-    /**
-     * @param players the players of this game
-     */
-    public void setPlayers(ArrayList <Player> players) 
-    {
-        this.players = players;
-    }
-    
-    /**
-     * Play the game. This might be one method or many method calls depending
-     * on your game.
-     */
-    public abstract void play();
-    
-    /**
-     * When the game is over, use this method to declare and display a winning
-     * player.
-     */
-    public abstract void declareWinner();
-
-   
+    @Override
+   public void play(){
+       GroupOfCards.shuffle();
+       
+       for(int i=0;i<7;i++){
+           
+           GroupOfCards.nam1.add(i,GroupOfCards.cards);
+          // name1[i]=GroupOfCards.cards.get[i);
+       }
+   }
     
 }//end class

@@ -5,10 +5,11 @@
  * Modified by: Falit Rajora, Harshdeep Kaur, Gurpreet Singh, Harkirat Cheema (11June 2019)
  */
 package ca.sheridancollege.project;
-
-import java.util.ArrayList;
 import java.util.Collections;
-
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.stream.Collectors;
 /**
  * A concrete class that represents any grouping of cards for a Game.
  * HINT, you might want to subclass this more than once.
@@ -18,52 +19,50 @@ import java.util.Collections;
 public class GroupOfCards extends Card
 {
    
-    //The group of cards, stored in an ArrayList
-    private ArrayList <Card> cards;
-    private int size;//the size of the grouping
+    String[] SUITS={"Clubs","Diamonds","Hearts","Spades"};
+    String[] RANKS= {"2", "3", "4", "5", "6", "7", "8", "9", "10","Jack", "Queen", "King", "Ace"};
+    private int handSize = 52;
+    public static List<Card> cards=new ArrayList<Card>();
     
-    public GroupOfCards(int givenSize) //3
-    {  
-        size = givenSize;
+    static List<String> nam1 = GroupOfCards.cards.stream()
+   .map(object -> Objects.toString(object, null))
+   .collect(Collectors.toList());
+    
+    public GroupOfCards(Suit s, Value gVal) {
+        super(s, gVal);
     }
     
-    /**
-     * A method that will get the group of cards as an ArrayList
-     * @return the group of cards.
-     */
-    public ArrayList<Card> showCards()
-    {
-        return cards;
+    public static void generateHand(){
+         int countCards = 0;
+		for(Card.Suit s: Card.Suit.values())
+                {
+                    for(Card.Value v: Card.Value.values())
+                    {
+                        cards.add(new GroupOfCards(s,v));
+                        countCards++;
+                        
+                    }
+                }
     }
     
-    public void shuffle()
+     public static void shuffle()
     {
         Collections.shuffle(cards);
     }
+     
+     public static void showCards(){
+         
+             generateHand();
 
-    /**
-     * @return the size of the group of cards
-     */
-    public int getSize() {
-        return size;
-    }
-
-    /**
-     * @param givenSize the max size for the group of cards
-     */
-    public void setSize(int givenSize) {
-        size = givenSize;
-    }
-    
+             for(Card c: cards)
+                {
+                    System.out.println(c.getValue() + " of " + c.getSuit());
+                }
+     }
     @Override
-    public String toString(){
-       return String.format("s%, d% ","size: ",getSize(),"cards: ",showCards()); 
-    }
-    
-    public void play(){
+     public String toString(){
+         return "Card Game";
+     }
         
-    }
-    public void declareWinner(){
-        
-    }
+     
 }//end class
